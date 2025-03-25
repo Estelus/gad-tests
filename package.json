@@ -15,6 +15,9 @@
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.12",
     "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-playwright": "^2.2.0",
+    "eslint-plugin-prettier": "^5.2.4",
     "globals": "^16.0.0",
     "prettier": "3.5.3",
     "typescript-eslint": "^8.27.0"
