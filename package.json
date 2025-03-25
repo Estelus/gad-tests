@@ -15,6 +15,7 @@
   "devDependencies": {
     "@eslint/js": "^9.23.0",
     "@playwright/test": "^1.51.1",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^22.13.12",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
