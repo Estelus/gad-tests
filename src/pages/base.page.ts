@@ -3,7 +3,7 @@ import { Page } from '@playwright/test';
 export class BasePage {
   url: string;
 
-  constructor(private page: Page) {
+  constructor(protected page: Page) {
     this.url = '';
   }
 
