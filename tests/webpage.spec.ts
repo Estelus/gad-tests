@@ -1,4 +1,4 @@
-import { ArticlePage } from '../src/pages/article.page';
+import { ArticlesPage } from '../src/pages/article.page';
 import { CommentsPage } from '../src/pages/comments.page';
 import { HomePage } from '../src/pages/home.page';
 import { expect, test } from '@playwright/test';
@@ -17,7 +17,7 @@ test.describe('Verify service main pages', () => {
 
   test('articles page title', { tag: '@GAD-R01-02' }, async ({ page }) => {
     //Arrange
-    const articlePage = new ArticlePage(page);
+    const articlePage = new ArticlesPage(page);
     // Act
     await articlePage.goto();
 

@@ -1,13 +1,10 @@
+import { BasePage } from './base.page';
 import { Page } from '@playwright/test';
 
-export class ArticlePage {
-  articlesUrl = '/articles.html';
-  constructor(private page: Page) {}
+export class ArticlesPage extends BasePage {
+  url = '/articles.html';
 
-  async goto(): Promise<void> {
-    await this.page.goto(this.articlesUrl);
-  }
-  async title(): Promise<string> {
-    return this.page.title();
+  constructor(page: Page) {
+    super(page);
   }
 }
