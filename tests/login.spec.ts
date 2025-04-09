@@ -9,7 +9,7 @@ test.describe('Verify menu main buttons', () => {
   }) => {
     //Arrange
     const userEmail = testUser1.userEmail;
-    const userPassword = 'test1';
+    const userPassword = testUser1.userPassword;
     const loginPage = new LoginPage(page);
     // Act
     await loginPage.goto();
