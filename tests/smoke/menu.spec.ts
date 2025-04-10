@@ -1,5 +1,5 @@
-import { ArticlesPage } from '../src/pages/article.page';
-import { CommentsPage } from '../src/pages/comments.page';
+import { ArticlesPage } from '../../src/pages/article.page';
+import { CommentsPage } from '../../src/pages/comments.page';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify menu main buttons', () => {
