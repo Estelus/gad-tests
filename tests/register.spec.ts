@@ -5,47 +5,49 @@ import { faker } from '@faker-js/faker';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify registration', () => {
-  test('register with correct credentials and login @GAD-R03-01 @GAD-R03-02 @GAD-R03-03', async ({
-    page,
-  }) => {
-    //Arrange
-    const userFirstName = faker.person.firstName().replace(/[^A-Za-z]/g, '');
-    const userLastName = faker.person.lastName().replace(/[^A-Za-z]/g, '');
-    const userEmail = faker.internet.email({
-      firstName: userFirstName,
-      lastName: userLastName,
-    });
-    const userPassword = faker.internet.password({
-      length: 10,
-      memorable: true,
-      pattern: /[A-Z]/,
-    });
+  test(
+    'register with correct credentials and login',
+    { tag: ['@GAD-R03-01', '@GAD-R03-02', '@GAD-R03-03'] },
+    async ({ page }) => {
+      //Arrange
+      const userFirstName = faker.person.firstName().replace(/[^A-Za-z]/g, '');
+      const userLastName = faker.person.lastName().replace(/[^A-Za-z]/g, '');
+      const userEmail = faker.internet.email({
+        firstName: userFirstName,
+        lastName: userLastName,
+      });
+      const userPassword = faker.internet.password({
+        length: 10,
+        memorable: true,
+        pattern: /[A-Z]/,
+      });
 
-    const registerPage = new RegisterPage(page);
+      const registerPage = new RegisterPage(page);
 
-    // Act
-    await registerPage.goto();
-    await registerPage.register(
-      userFirstName,
-      userLastName,
-      userEmail,
-      userPassword,
-    );
+      // Act
+      await registerPage.goto();
+      await registerPage.register(
+        userFirstName,
+        userLastName,
+        userEmail,
+        userPassword,
+      );
 
-    const expectedAlertPopupText = 'User created';
-    // Assert
-    await expect(registerPage.alertPopUp).toHaveText(expectedAlertPopupText);
+      const expectedAlertPopupText = 'User created';
+      // Assert
+      await expect(registerPage.alertPopUp).toHaveText(expectedAlertPopupText);
 
-    const loginPage = new LoginPage(page);
-    await loginPage.waitForPageToLoadURL();
-    const title = await loginPage.title();
-    expect.soft(title).toContain('Login');
+      const loginPage = new LoginPage(page);
+      await loginPage.waitForPageToLoadURL();
+      const title = await loginPage.title();
+      expect.soft(title).toContain('Login');
 
-    // Assert
-    await loginPage.login(userEmail, userPassword);
+      // Assert
+      await loginPage.login(userEmail, userPassword);
 
-    const welcomePage = new WelcomePage(page);
-    const titleWelcomePage = await welcomePage.title();
-    expect(titleWelcomePage).toContain('Welcome');
-  });
+      const welcomePage = new WelcomePage(page);
+      const titleWelcomePage = await welcomePage.title();
+      expect(titleWelcomePage).toContain('Welcome');
+    },
+  );
 });

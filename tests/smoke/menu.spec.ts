@@ -19,21 +19,23 @@ test.describe('Verify menu main buttons', () => {
     expect(title).toContain('Comments');
   });
 
-  test('articles button navigates to article page @GAD-R01-03', async ({
-    page,
-  }) => {
-    //Arrange
-    const commentsPage = new CommentsPage(page);
+  test(
+    'articles button navigates to article page',
+    { tag: '@GAD-R01-03' },
+    async ({ page }) => {
+      //Arrange
+      const commentsPage = new CommentsPage(page);
 
-    // Act
-    await commentsPage.goto();
-    await commentsPage.mainMenu.articlesButton.click();
-    const articlePage = new ArticlesPage(page);
-    const title = await articlePage.title();
+      // Act
+      await commentsPage.goto();
+      await commentsPage.mainMenu.articlesButton.click();
+      const articlePage = new ArticlesPage(page);
+      const title = await articlePage.title();
 
-    // Assert
-    expect(title).toContain('Articles');
-  });
+      // Assert
+      expect(title).toContain('Articles');
+    },
+  );
 
   test('home page button navigates to main page @GAD-R01-03', async ({
     page,
