@@ -39,8 +39,8 @@ test.describe('Verify registration', () => {
 
       const loginPage = new LoginPage(page);
       await loginPage.waitForPageToLoadURL();
-      const title = await loginPage.title();
-      expect.soft(title).toContain('Login');
+      const titleLogin = await loginPage.title();
+      expect.soft(titleLogin).toContain('Login');
 
       // Assert
       await loginPage.login(
