@@ -11,6 +11,7 @@ export class RegisterPage extends BasePage {
   registerButton = this.page.getByTestId('register-button');
 
   alertPopUp = this.page.getByTestId('alert-popup');
+  emailErrorText = this.page.locator('#octavalidate_email');
 
   //  registerError = this.page.getByTestId('register-error');
 
